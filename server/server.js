@@ -16,7 +16,6 @@ app.use(
 );
 
 const GetMainIngredients = async (reaction) => {
-    // let newData = []
     const response = await fetch(`https://api.fda.gov/drug/event.json?search=patient.reaction.reactionmeddrapt.exact:${reaction}&count=patient.drug.medicinalproduct`)
     const data = await response.json();
     return data.results.sort((a, b) => b["count"] - a["count"]).splice(0, 10)
